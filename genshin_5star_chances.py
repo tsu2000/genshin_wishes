@@ -34,12 +34,13 @@ def main(): # Main title
     
 def about(): # About the app
     
-    st.components.v1.html("""<a href="https://github.com/XiongPengNUS/learn_dao" target="_blank"><img src="https://img.shields.io/static/v1?label=XiongPengNUS&message=learn_dao&color=blue&logo=github" alt="XXXX"></a><a href="https://github.com/XiongPengNUS/learn_dao" target="_blank"><img src="https://img.shields.io/github/stars/XiongPengNUS/learn_dao?style=social" alt="tsu2000 "></a>""", height=28)
+    st.components.v1.html("""<a href="https://github.com/tsu2000/genshin_5star_chances" target="_blank"><img src="https://img.shields.io/static/v1?label=tsu2000&message=genshin_5star_chances
+&color=blue&logo=github" alt="_blank"></a><a href="https://github.com/tsu2000/genshin_5star_chances" target="_blank"><img src="https://img.shields.io/github/stars/tsu2000/genshin_5star_chances?style=social" alt="tsu2000 - Genshin Impact 5-Star Chances"></a>""", height=28)
 
     st.markdown("---")
     st.markdown('### Original Sources:')
     st.markdown('This web application was inspired by the following posts, and builds on the statistical models of the first post on the HoYoLAB Forums in particular.')
-    st.markdown("- [**Statistical model for Genshin Impact's droprates - Post on HoYoLAB Forums by Cgg**](https://www.hoyolab.com/article/497840)")
+    st.markdown("- [**Statistical model for Genshin Impact's droprates - Post on HoYoLAB Forums by Sengalev, original by Cgg**](https://www.hoyolab.com/article/497840)")
     st.write('####')
     st.markdown('This infographic post on **Reddit** provides a simplified overview of what this app aims to illustrate that may be easier to understand for some:')
     st.markdown("- [**Soft and hard pity explained based on 24M wishes - Post on r/Genshin_Impact by u/chaos-kaizer**](https://www.reddit.com/r/Genshin_Impact/comments/o9v0c0/soft_and_hard_pity_explained_based_on_24m_wishes)")
