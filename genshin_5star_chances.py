@@ -13,7 +13,7 @@ def main(): # Main title
     subtitle = '### A statistical exploration of 5-Star Drop Rates in Genshin Impact'
     st.markdown(subtitle)
     
-    st.markdown('This web app is for the data visualisation of the drop rates of a 5-Star character or weapon action role-playing game, Genshin Impact. To observe and interact with the data visualisations, please select a banner from the box below.')
+    st.markdown('This web app is for the data visualisation of the drop rates of a 5-Star Character or Weapon in the action role-playing game created by miHoYo, Genshin Impact. To observe and interact with the data visualisations, please select a banner from the box below.')
 
     topics = ['About',
               '5-Star Drop Rate for Permanent/Chararacter Event Banners', 
