@@ -61,9 +61,9 @@ def about(): # About the app
 def pceb(): # Permanent/Character Event Banner
     
     st.markdown('## Permanent/Character Event Banner Statistics:')
-    st.markdown('The statistics for obtaining a 5-Star character are as follows (Referring to the number of pulls after obtaining previous 5-star character): ')
+    st.markdown('The probabilities for obtaining a 5-Star Character (in number of pulls after pity reset) are as follows: ')
     st.markdown('- **Base Rate:** Before 74 pulls - *Low chance*')
-    st.markdown('- **Soft Pity:** From 74 pulls to 89 pulls - *Dramatically increasing chances*')
+    st.markdown('- **Soft Pity:** From 74 pulls to 89 pulls - *Chance increases exponentially*')
     st.markdown('- **Hard Pity:** 90th Pull - *Guaranteed 5-Star*')
     
     st.write("##")
@@ -116,6 +116,7 @@ def pceb(): # Permanent/Character Event Banner
     plt.xticks(np.arange(0, 91, 10))
     st.pyplot(fig)
     #################
+    
     
     # Calculating cumulative probabilities
     def prob_mul(n):
@@ -178,8 +179,7 @@ def pceb(): # Permanent/Character Event Banner
     st.pyplot(fig)
     #################
 
-    
-    
+   
     ### Calculating Distribution of Successful Pulls
     
     d = deque(roll_cum_dict.values())
@@ -238,10 +238,10 @@ def pceb(): # Permanent/Character Event Banner
 def web(): # Weapon Event Banner
     
     st.markdown('## Weapon Event Banner Statistics:')
-    st.markdown('The statistics for obtaining a 5-Star Weapon are as follows (Referring to the number of pulls after obtaining previous 5-star Weapon): ')
+    st.markdown('The probabilities for obtaining a 5-Star Weapon (in number of pulls after pity reset) are as follows: : ')
   
     st.markdown('- **Base Rate:** Before 63 pulls - *Low chance*')
-    st.markdown('- **Soft Pity:** From 63 pulls to 76 pulls - *Dramatically increasing chances*')
+    st.markdown('- **Soft Pity:** From 63 pulls to 76 pulls - *Chance increases exponentially*')
     st.markdown('- **Hard Pity:** 77th Pull - *Guaranteed 5-Star*')
     
     st.write("##")
@@ -306,7 +306,6 @@ def web(): # Weapon Event Banner
     prob_64to76 = np.cumsum(prob_64to76) + geom.cdf(62, 0.007) + binom.cdf(0, 62, 0.007) * roll_dict[63]
     prob_64to76_dict = {num: prob_64to76[num - 64] for num in range(64, 77)}
     
-    
     def roll_cum_probs(x):
         if x < 63:
             return geom.cdf(x, 0.007)
@@ -321,6 +320,7 @@ def web(): # Weapon Event Banner
             return 1
 
     roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 78)}
+    
     
     st.markdown('### Cumulative Distribution Function (CDF)')
     xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
@@ -355,7 +355,6 @@ def web(): # Weapon Event Banner
     plt.xticks(np.arange(0, 81, 10))
     st.pyplot(fig)
     #################
-
     
     
     ### Calculating Distribution of Successful Pulls
