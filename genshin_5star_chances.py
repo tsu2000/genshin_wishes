@@ -70,7 +70,7 @@ def pceb(): # Permanent/Character Event Banner
     
     st.markdown('What each graph means:')
     st.markdown('- **Probability Mass Function (PMF):** The base per-pull probability of obtaining a 5-Star Character on each individual pull after pity reset')
-    st.markdown('- **Cumulative Probability Distribution (PDF):** The cumulative probability of obtaining a 5-Star Character on your current pull or before that')
+    st.markdown('- **Cumulative Probability Distribution (CDF):** The cumulative probability of obtaining a 5-Star Character on your current pull or before that')
     st.markdown('- **Distribution of Successful Pulls:** Where 5-Star Character drops are most likely to occur between the pity reset and hard pity')
     
     st.write("###")
@@ -248,7 +248,7 @@ def web(): # Weapon Event Banner
     
     st.markdown('What each graph means:')
     st.markdown('- **Probability Mass Function (PMF):** The base per-pull probability of obtaining a 5-Star Weapon on each individual pull after pity reset')
-    st.markdown('- **Cumulative Probability Distribution (PDF):** The cumulative probability of obtaining a 5-Star Weapon on your current pull or before that')
+    st.markdown('- **Cumulative Probability Distribution (CDF):** The cumulative probability of obtaining a 5-Star Weapon on your current pull or before that')
     st.markdown('- **Distribution of Successful Pulls:** Where 5-Star Weapon drops are most likely to occur between the pity reset and hard pity')
     
     st.write("###")
