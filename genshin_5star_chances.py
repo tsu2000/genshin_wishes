@@ -226,14 +226,13 @@ def pceb(): # Permanent/Character Event Banner
         return st.pyplot(fig)
         #################
         
-    plot1()
-    plot2()
-    plot3()  
+    return plot1(), plot2(), plot3()
+
     
     st.markdown("---")
     st.markdown('**Final Note:** These graphs do not take into account if you lose the 50/50 when pulling on the character event banner for a featured character. It only calculates your chances of getting **a** 5-Star character at the set amount of pulls after your pity resets.')
     
-    
+
   
     
     
