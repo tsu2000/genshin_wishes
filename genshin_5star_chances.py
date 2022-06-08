@@ -124,9 +124,7 @@ def pceb(): # Permanent/Character Event Banner
     # Returning plots
     
     @st.cache(hash_funcs={matplotlib.figure.Figure: lambda _: None})  
-    def plot1():  
-        st.markdown('### Probability Mass Function (PMF)')
-        xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)   
+    def plot1():   
         
         
         #### PLOT 1 ####
@@ -221,7 +219,8 @@ def pceb(): # Permanent/Character Event Banner
         return st.pyplot(fig)
         #################
         
-     
+    st.markdown('### Probability Mass Function (PMF)')
+    xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)  
     plot1()
     
     st.markdown('### Cumulative Distribution Function (CDF)')
