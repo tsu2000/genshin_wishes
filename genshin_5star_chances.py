@@ -123,8 +123,12 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    @st.cache(suppress_st_warning = True)   
+    @st.cache(allow_output_mutation = True, suppress_st_warning = True)   
     def plot1():  
+        st.markdown('### Probability Mass Function (PMF)')
+        xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)   
+        
+        
         #### PLOT 1 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
         plt.style.use('seaborn-whitegrid')
@@ -154,7 +158,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-    @st.cache(suppress_st_warning = True)  
+    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
     def plot2():    
         #### PLOT 2 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
@@ -188,7 +192,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-    @st.cache(suppress_st_warning = True)  
+    @st.cache(allow_output_mutation = True, suppress_st_warning = True)  
     def plot3():   
         #### PLOT 3 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
@@ -217,8 +221,7 @@ def pceb(): # Permanent/Character Event Banner
         return st.pyplot(fig)
         #################
         
-    st.markdown('### Probability Mass Function (PMF)')
-    xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)    
+     
     plot1()
     
     st.markdown('### Cumulative Distribution Function (CDF)')
