@@ -84,7 +84,7 @@ def pceb(): # Permanent/Character Event Banner
         else:
             return 1
     
-    roll_dict = {num: roll_probs(num) for num in range(1, 91)}
+    global roll_dict = {num: roll_probs(num) for num in range(1, 91)}
     
     # Calculating cumulative probabilities
     def prob_mul(n):
@@ -110,7 +110,7 @@ def pceb(): # Permanent/Character Event Banner
         else:
             return 1
 
-    roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 91)}
+    global roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 91)}
     
     ### Calculating Distribution of Successful Pulls
     d = deque(roll_cum_dict.values())
@@ -119,7 +119,7 @@ def pceb(): # Permanent/Character Event Banner
     subd = np.array(d)
     cumd = np.array(list(roll_cum_dict.values()))
     succ_pull_probs = list(cumd - subd)
-    succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 91)}
+    global succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 91)}
     
     # Returning plots
     
@@ -274,7 +274,7 @@ def web(): # Weapon Event Banner
         else:
             return 1
     
-    roll_dict = {num: roll_probs(num) for num in range(1, 78)}
+    global roll_dict = {num: roll_probs(num) for num in range(1, 78)}
     
     # Calculating cumulative probabilities
     def prob_mul(n):
@@ -300,7 +300,7 @@ def web(): # Weapon Event Banner
         else:
             return 1
 
-    roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 78)}
+    global roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 78)}
     
     ### Calculating Distribution of Successful Pulls  
     d = deque(roll_cum_dict.values())
@@ -309,7 +309,7 @@ def web(): # Weapon Event Banner
     subd = np.array(d)
     cumd = np.array(list(roll_cum_dict.values()))
     succ_pull_probs = list(cumd - subd)
-    succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 78)}
+    global succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 78)}
     
     # Returning plots
   
