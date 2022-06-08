@@ -123,7 +123,7 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)    
+
     def plot1():     
         st.markdown('### Probability Mass Function (PMF)')
         xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)
@@ -152,12 +152,12 @@ def pceb(): # Permanent/Character Event Banner
         plt.xlabel('Number of Pulls')
 
         plt.xticks(np.arange(0, 91, 10))
-        return 'cheese'
+        return st.pyplot(fig)
         #################
 
 
 
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)    
+   
     def plot2():     
         st.markdown('### Cumulative Distribution Function (CDF)')
         xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
@@ -194,7 +194,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)    
+  
     def plot3():   
         st.markdown('### Distribution of Successful Pulls')
         xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
@@ -226,7 +226,9 @@ def pceb(): # Permanent/Character Event Banner
         return st.pyplot(fig)
         #################
         
-    return plot1(), plot2(), plot3()
+    plot1()
+    plot2()
+    plot3()
 
     
     st.markdown("---")
