@@ -123,19 +123,24 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+    
     plot1()
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+    
     plot2()
    
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+    
     plot3()
     
     st.markdown("---")
     st.markdown('**Final Note:** These graphs do not take into account if you lose the 50/50 when pulling on the character event banner for a featured character. It only calculates your chances of getting **a** 5-Star character at the set amount of pulls after your pity resets.')
     
     
+    
+    
+    
+    
+@st.cache(allow_output_mutation = True, suppress_st_warning = True)    
 def plot1():     
     st.markdown('### Probability Mass Function (PMF)')
     xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)
@@ -169,7 +174,7 @@ def plot1():
     
     
 
-    
+@st.cache(allow_output_mutation = True, suppress_st_warning = True)    
 def plot2():     
     st.markdown('### Cumulative Distribution Function (CDF)')
     xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
@@ -206,7 +211,7 @@ def plot2():
 
     
     
-    
+@st.cache(allow_output_mutation = True, suppress_st_warning = True)    
 def plot3():   
     st.markdown('### Distribution of Successful Pulls')
     xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
@@ -308,20 +313,20 @@ def web(): # Weapon Event Banner
     
     # Returning plots
   
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+    
     plot4()
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+    
     plot5()
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+    
     plot6()
     
     st.markdown("---")
     st.markdown('**Final Note:** These graphs do not take into account if you lose the 50/50 when pulling on the weapon event banner for a featured event weapon. It only calculates your chances of getting **a** 5-Star Weapon at the set amount of pulls after your pity resets.')
     
     
-    
+@st.cache(allow_output_mutation = True, suppress_st_warning = True)    
 def plot4():    
     st.markdown('### Probability Mass Function (PMF)')
     xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
@@ -356,7 +361,7 @@ def plot4():
 
     
     
-    
+@st.cache(allow_output_mutation = True, suppress_st_warning = True)    
 def plot5():    
     st.markdown('### Cumulative Distribution Function (CDF)')
     xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
@@ -394,7 +399,7 @@ def plot5():
     
     
 
-    
+@st.cache(allow_output_mutation = True, suppress_st_warning = True)    
 def plot6():    
     st.markdown('### Distribution of Successful Pulls')
     xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
