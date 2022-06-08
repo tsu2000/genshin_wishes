@@ -31,7 +31,7 @@ def main(): # Main title
         
         
         
-    
+@st.cache(allow_output_mutation = True)    
 def about(): # About the app
     
     st.components.v1.html("""<a href="https://github.com/tsu2000/genshin_5star_chances" target="_blank"><img src="https://img.shields.io/static/v1?label=tsu2000&message=genshin_5star_chances
@@ -75,18 +75,6 @@ def pceb(): # Permanent/Character Event Banner
     
     st.write("###")
     
-    @st.cache(allow_output_mutation = True)
-    model1()
-    
-    @st.cache(allow_output_mutation = True)
-    model2()
-    
-    @st.cache(allow_output_mutation = True)
-    model3()
-    
-   
-    
-    
     def roll_probs(x):
         if x < 74:
             return 0.006
@@ -101,7 +89,7 @@ def pceb(): # Permanent/Character Event Banner
     st.markdown('### Probability Mass Function (PMF)')
     xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)
     
- def model1():
+ 
     #### PLOT 1 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -160,7 +148,7 @@ def pceb(): # Permanent/Character Event Banner
     st.markdown('### Cumulative Distribution Function (CDF)')
     xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
     
-def model2():    
+    
     #### PLOT 2 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -202,11 +190,11 @@ def model2():
     succ_pull_probs = list(cumd - subd)
     succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 91)}
 
-   
+    
     st.markdown('### Distribution of Successful Pulls')
     xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
     
-def model3():     
+    
     #### PLOT 3 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -265,16 +253,6 @@ def web(): # Weapon Event Banner
     
     st.write("###")
     
-    @st.cache(allow_output_mutation = True)
-    model4()
-    
-    @st.cache(allow_output_mutation = True)
-    model5()
-    
-    @st.cache(allow_output_mutation = True)
-    model6()
-    
-    
     def roll_probs(x):
         if x < 63:
             return 0.007
@@ -289,7 +267,7 @@ def web(): # Weapon Event Banner
     st.markdown('### Probability Mass Function (PMF)')
     xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
     
-def model4(): 
+ 
     #### PLOT 1 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -317,7 +295,6 @@ def model4():
     st.pyplot(fig)
     #################
     
-   
     # Calculating cumulative probabilities
     def prob_mul(n):
         if n == 64:
@@ -348,7 +325,7 @@ def model4():
     st.markdown('### Cumulative Distribution Function (CDF)')
     xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
     
-def model5():     
+    
     #### PLOT 2 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -394,7 +371,7 @@ def model5():
     st.markdown('### Distribution of Successful Pulls')
     xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
     
-def model6():     
+    
     #### PLOT 3 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -431,3 +408,4 @@ def model6():
     
 if __name__ == "__main__":
     main()
+
