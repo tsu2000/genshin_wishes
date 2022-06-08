@@ -123,7 +123,7 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    @st.experimental_memo(allow_output_mutation = True, suppress_st_warning = True)
+    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
     def plot1():  
         #### PLOT 1 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
