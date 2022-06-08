@@ -58,7 +58,7 @@ def about(): # About the app
     
     
     
-@st.cache(allow_output_mutation = True, suppress_st_warning = True)    
+ 
 def pceb(): # Permanent/Character Event Banner
     
     st.markdown('## Permanent/Character Event Banner Statistics:')
@@ -123,7 +123,7 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    
+    @st.cache(suppress_st_warning = True)   
     def plot1():  
         #### PLOT 1 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
@@ -154,7 +154,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-      
+    @st.cache(suppress_st_warning = True)  
     def plot2():    
         #### PLOT 2 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
@@ -188,7 +188,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-      
+    @st.cache(suppress_st_warning = True)  
     def plot3():   
         #### PLOT 3 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
