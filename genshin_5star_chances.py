@@ -104,10 +104,10 @@ def pceb(): # Permanent/Character Event Banner
     # Text box
     rxi = round(roll_dict[xi], 8)
     textstr = "\n".join([f'Base Rate of obtaining a 5-Star Character on Pull No. {xi}:',
-                         f'{rxi} (around \033[1m{round(rxi * 100, 2)}%\033[0m)'])
+                         fr'{rxi} (around $\bf{%s %}$" % str({round(rxi * 100, 2)})'])
     props = dict(boxstyle = 'round', facecolor = 'lightcyan')
     plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
-
+        
     # Title, Axes Labels
     plt.title('Probability Mass Function (PMF) of obtaining a 5-Star Character at each pull after pity reset')
     plt.ylabel('Probability')
