@@ -103,7 +103,7 @@ def pceb(): # Permanent/Character Event Banner
 
     # Text box
     rxi = round(roll_dict[xi], 8)
-    textstr = "\n".join([f'Base Rate of obtaining a 5-Star Character on Pull No. {xi}:',
+    textstr = "\n".join([r'Base Rate of obtaining a 5-Star Character on Pull No. $\bf{%s}$' % str(xi),
                          f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'lightcyan')
     plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
@@ -166,7 +166,7 @@ def pceb(): # Permanent/Character Event Banner
 
     # Text box
     rxc = round(roll_cum_dict[xc], 8)
-    textstr = "\n".join([f'Chance of obtaining a 5-Star Character by {xc} pull(s) or less:',
+    textstr = "\n".join([r'Chance of obtaining a 5-Star Character by $\bf{%s}$ pull(s) or less:' % str(xc),
                          f'{rxc}' + ' (around ' + r"$\bf" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'wheat')
     plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
@@ -209,7 +209,7 @@ def pceb(): # Permanent/Character Event Banner
 
     # Text box
     rxs = round(succ_pull_dict[xs], 8)
-    textstr = "\n".join([f'Actual Probability of successfully obtaining a  5-Star Character on Pull No. {xs}:',
+    textstr = "\n".join([r'Actual Probability of successfully obtaining a 5-Star Character on Pull No. $\bf{%s}$:' % str(xs),
                          f'{rxs}' + ' (around ' + r"$\bf" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'greenyellow')
     plt.text(-1.25, 0.105, textstr, fontsize = 12, va = 'top', bbox = props)
@@ -281,7 +281,7 @@ def web(): # Weapon Event Banner
 
     # Text box
     rxi = round(roll_dict[xi], 8)
-    textstr = "\n".join([f'Base Rate of obtaining a 5-Star Weapon on Pull No. {xi}:',
+    textstr = "\n".join([r'Base Rate of obtaining a 5-Star Weapon on Pull No. $\bf{%s}$' % str(xi),
                          f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'lightcyan')
     plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
@@ -343,7 +343,7 @@ def web(): # Weapon Event Banner
 
     # Text box
     rxc = round(roll_cum_dict[xc], 8)
-    textstr = "\n".join([f'Chance of obtaining a 5-Star Weapon by {xc} pull(s) or less:',
+    textstr = "\n".join([r'Chance of obtaining a 5-Star Weapon by $\bf{%s}$ pull(s) or less:' % str(xc),
                          f'{rxc}' + ' (around ' + r"$\bf" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'wheat')
     plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
@@ -385,7 +385,7 @@ def web(): # Weapon Event Banner
 
     # Text box
     rxs = round(succ_pull_dict[xs], 8)
-    textstr = "\n".join([f'Actual Probability of successfully obtaining a 5-Star Weapon on Pull No. {xs}:',
+    textstr = "\n".join([r'Actual Probability of successfully obtaining a 5-Star Weapon on Pull No. $\bf{%s}$:' % str(xs),
                          f'{rxs}' + ' (around ' + r"$\bf" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'greenyellow')
     plt.text(-1.25, 0.115, textstr, fontsize = 12, va = 'top', bbox = props)
