@@ -123,11 +123,8 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    @st.experimental_memo(suppress_st_warning = True)
-    def plot1():     
-        st.markdown('### Probability Mass Function (PMF)')
-        xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)
-
+    @st.experimental_memo
+    def plot1():  
         #### PLOT 1 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
         plt.style.use('seaborn-whitegrid')
@@ -226,8 +223,15 @@ def pceb(): # Permanent/Character Event Banner
         return st.pyplot(fig)
         #################
         
+    st.markdown('### Probability Mass Function (PMF)')
+    xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)    
     plot1()
+    
+    
     plot2()
+    
+    
+    
     plot3()
     
     st.markdown("---")
