@@ -8,6 +8,9 @@ from scipy.stats import binom
 from scipy.stats import geom
 
 
+
+
+
 def main(): # Main title
     st.title('Genshin Impact 5-Star Chances')
     subtitle = '### A statistical exploration of 5-Star Drop Rates in Genshin Impact'
@@ -30,8 +33,8 @@ def main(): # Main title
 
         
         
-        
-@st.cache(allow_output_mutation = True)    
+       
+    
 def about(): # About the app
     
     st.components.v1.html("""<a href="https://github.com/tsu2000/genshin_5star_chances" target="_blank"><img src="https://img.shields.io/static/v1?label=tsu2000&message=genshin_5star_chances
@@ -51,8 +54,6 @@ def about(): # About the app
     st.markdown("---")
                 
     st.markdown('**Important Notice**: *This app is not affiliated with genshin-wishes.com or miHoYo. All technical details relating to current probability rates may be subject to change in the future. Genshin Impact and miHoYo are trademarks or registered trademarks of miHoYo. Genshin Impact © miHoYo.*')
-    
-    
     
     
     
@@ -226,14 +227,10 @@ def pceb(): # Permanent/Character Event Banner
     st.markdown("---")
     
     st.markdown('**Final Note:** These graphs do not take into account if you lose the 50/50 when pulling on the character event banner for a featured character. It only calculates your chances of getting **a** 5-Star character at the set amount of pulls after your pity resets.')
-
+ 
     
     
-    
-    
-    
-    
-    
+   
     
 def web(): # Weapon Event Banner
     
@@ -406,6 +403,6 @@ def web(): # Weapon Event Banner
 
 
     
+    
 if __name__ == "__main__":
     main()
-
