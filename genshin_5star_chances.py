@@ -122,9 +122,6 @@ def pceb(): # Permanent/Character Event Banner
     succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 91)}
     
     # Returning plots
-    plot1()
-    plot2()
-    plot3()
     
     @st.cache(allow_output_mutation = True, suppress_st_warning = True)    
     def plot1():     
@@ -228,6 +225,10 @@ def pceb(): # Permanent/Character Event Banner
         plt.xticks(np.arange(0, 91, 10))
         return st.pyplot(fig)
         #################
+        
+    plot1()
+    plot2()
+    plot3()
     
     st.markdown("---")
     st.markdown('**Final Note:** These graphs do not take into account if you lose the 50/50 when pulling on the character event banner for a featured character. It only calculates your chances of getting **a** 5-Star character at the set amount of pulls after your pity resets.')
