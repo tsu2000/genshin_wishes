@@ -84,7 +84,7 @@ def pceb(): # Permanent/Character Event Banner
         else:
             return 1
     
-    global roll_dict = {num: roll_probs(num) for num in range(1, 91)}
+    roll_dict = {num: roll_probs(num) for num in range(1, 91)}
     
     # Calculating cumulative probabilities
     def prob_mul(n):
@@ -110,7 +110,7 @@ def pceb(): # Permanent/Character Event Banner
         else:
             return 1
 
-    global roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 91)}
+    roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 91)}
     
     ### Calculating Distribution of Successful Pulls
     d = deque(roll_cum_dict.values())
@@ -119,7 +119,7 @@ def pceb(): # Permanent/Character Event Banner
     subd = np.array(d)
     cumd = np.array(list(roll_cum_dict.values()))
     succ_pull_probs = list(cumd - subd)
-    global succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 91)}
+    succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 91)}
     
     # Returning plots
     
@@ -274,7 +274,7 @@ def web(): # Weapon Event Banner
         else:
             return 1
     
-    global roll_dict = {num: roll_probs(num) for num in range(1, 78)}
+    roll_dict = {num: roll_probs(num) for num in range(1, 78)}
     
     # Calculating cumulative probabilities
     def prob_mul(n):
@@ -300,7 +300,7 @@ def web(): # Weapon Event Banner
         else:
             return 1
 
-    global roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 78)}
+    roll_cum_dict = {num: roll_cum_probs(num) for num in range(1, 78)}
     
     ### Calculating Distribution of Successful Pulls  
     d = deque(roll_cum_dict.values())
@@ -309,12 +309,12 @@ def web(): # Weapon Event Banner
     subd = np.array(d)
     cumd = np.array(list(roll_cum_dict.values()))
     succ_pull_probs = list(cumd - subd)
-    global succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 78)}
+    succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 78)}
     
     # Returning plots
   
     
-    plot4()
+    plot4(roll_dict.keys(), roll_dict.values())
     
     
     plot5()
@@ -327,7 +327,7 @@ def web(): # Weapon Event Banner
     
     
 @st.cache(allow_output_mutation = True, suppress_st_warning = True)    
-def plot4():    
+def plot4(x, y):    
     st.markdown('### Probability Mass Function (PMF)')
     xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
    
@@ -335,7 +335,7 @@ def plot4():
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
     
-    ax = plt.plot(roll_dict.keys(), roll_dict.values(), color = 'blue')
+    ax = plt.plot(x, y, color = 'blue')
 
     # Vertical line, point and text
     plt.axvline(xi, linestyle = '--', color = 'blue')
