@@ -123,7 +123,7 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    @st.cache(hash_funcs = {FooType: hash_foo_type}, suppress_st_warning = True)
+    @st.cache(suppress_st_warning = True)
     def plot1():     
         st.markdown('### Probability Mass Function (PMF)')
         xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)
@@ -157,7 +157,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-    @st.cache(hash_funcs = {FooType: hash_foo_type}, suppress_st_warning = True)   
+    @st.cache(suppress_st_warning = True)   
     def plot2():     
         st.markdown('### Cumulative Distribution Function (CDF)')
         xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
@@ -194,7 +194,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-    @st.cache(hash_funcs = {FooType: hash_foo_type}, suppress_st_warning = True)  
+    @st.cache(suppress_st_warning = True)  
     def plot3():   
         st.markdown('### Distribution of Successful Pulls')
         xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
@@ -310,7 +310,7 @@ def web(): # Weapon Event Banner
     
     # Returning plots
     
-    @st.cache(hash_funcs = {FooType: hash_foo_type}, suppress_st_warning = True)    
+    @st.cache(suppress_st_warning = True)    
     def plot4():    
         st.markdown('### Probability Mass Function (PMF)')
         xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
@@ -345,7 +345,7 @@ def web(): # Weapon Event Banner
 
 
 
-    @st.cache(hash_funcs = {FooType: hash_foo_type}, suppress_st_warning = True)    
+    @st.cache(suppress_st_warning = True)    
     def plot5():    
         st.markdown('### Cumulative Distribution Function (CDF)')
         xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
@@ -383,7 +383,7 @@ def web(): # Weapon Event Banner
 
 
 
-    @st.cache(hash_funcs = {FooType: hash_foo_type}, suppress_st_warning = True)    
+    @st.cache(suppress_st_warning = True)    
     def plot6():    
         st.markdown('### Distribution of Successful Pulls')
         xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
