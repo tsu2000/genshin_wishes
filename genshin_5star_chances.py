@@ -75,6 +75,18 @@ def pceb(): # Permanent/Character Event Banner
     
     st.write("###")
     
+    @st.cache(allow_output_mutation = True)
+    model1()
+    
+    @st.cache(allow_output_mutation = True)
+    model2()
+    
+    @st.cache(allow_output_mutation = True)
+    model3()
+    
+   
+    
+    
     def roll_probs(x):
         if x < 74:
             return 0.006
@@ -89,7 +101,7 @@ def pceb(): # Permanent/Character Event Banner
     st.markdown('### Probability Mass Function (PMF)')
     xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)
     
- 
+ def model1():
     #### PLOT 1 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -103,7 +115,7 @@ def pceb(): # Permanent/Character Event Banner
 
     # Text box
     rxi = round(roll_dict[xi], 8)
-    textstr = "\n".join([r'Base Rate of obtaining a 5-Star Character on Pull No. $\bf{%s}$' % str(xi),
+    textstr = "\n".join([r'Base Rate of obtaining a 5-Star Character on Pull No. $\bf{%s}$:' % str(xi),
                          f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'lightcyan')
     plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
@@ -148,7 +160,7 @@ def pceb(): # Permanent/Character Event Banner
     st.markdown('### Cumulative Distribution Function (CDF)')
     xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
     
-    
+def model2():    
     #### PLOT 2 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -190,11 +202,11 @@ def pceb(): # Permanent/Character Event Banner
     succ_pull_probs = list(cumd - subd)
     succ_pull_dict = {num: succ_pull_probs[num - 1] for num in range(1, 91)}
 
-    
+   
     st.markdown('### Distribution of Successful Pulls')
     xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
     
-    
+def model3():     
     #### PLOT 3 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -238,7 +250,7 @@ def pceb(): # Permanent/Character Event Banner
 def web(): # Weapon Event Banner
     
     st.markdown('## Weapon Event Banner Statistics:')
-    st.markdown('The probabilities for obtaining a 5-Star Weapon (in number of pulls after pity reset) are as follows: : ')
+    st.markdown('The probabilities for obtaining a 5-Star Weapon (in number of pulls after pity reset) are as follows:')
   
     st.markdown('- **Base Rate:** Before 63 pulls - *Low chance*')
     st.markdown('- **Soft Pity:** From 63 pulls to 76 pulls - *Chance increases exponentially*')
@@ -252,6 +264,16 @@ def web(): # Weapon Event Banner
     st.markdown('- **Distribution of Successful Pulls:** Where 5-Star Weapon drops are most likely to occur between the pity reset and hard pity')
     
     st.write("###")
+    
+    @st.cache(allow_output_mutation = True)
+    model4()
+    
+    @st.cache(allow_output_mutation = True)
+    model5()
+    
+    @st.cache(allow_output_mutation = True)
+    model6()
+    
     
     def roll_probs(x):
         if x < 63:
@@ -267,7 +289,7 @@ def web(): # Weapon Event Banner
     st.markdown('### Probability Mass Function (PMF)')
     xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
     
- 
+def model4(): 
     #### PLOT 1 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -281,7 +303,7 @@ def web(): # Weapon Event Banner
 
     # Text box
     rxi = round(roll_dict[xi], 8)
-    textstr = "\n".join([r'Base Rate of obtaining a 5-Star Weapon on Pull No. $\bf{%s}$' % str(xi),
+    textstr = "\n".join([r'Base Rate of obtaining a 5-Star Weapon on Pull No. $\bf{%s}$:' % str(xi),
                          f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
     props = dict(boxstyle = 'round', facecolor = 'lightcyan')
     plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
@@ -295,6 +317,7 @@ def web(): # Weapon Event Banner
     st.pyplot(fig)
     #################
     
+   
     # Calculating cumulative probabilities
     def prob_mul(n):
         if n == 64:
@@ -325,7 +348,7 @@ def web(): # Weapon Event Banner
     st.markdown('### Cumulative Distribution Function (CDF)')
     xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
     
-    
+def model5():     
     #### PLOT 2 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
@@ -371,7 +394,7 @@ def web(): # Weapon Event Banner
     st.markdown('### Distribution of Successful Pulls')
     xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
     
-    
+def model6():     
     #### PLOT 3 ####
     fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
     plt.style.use('seaborn-whitegrid')
