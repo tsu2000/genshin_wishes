@@ -124,10 +124,8 @@ def pceb(): # Permanent/Character Event Banner
     
     # Returning plots
     
-    @st.cache(hash_funcs={matplotlib.figure.Figure: lambda _: None})  
+      
     def plot1():   
-        
-        
         #### PLOT 1 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
         plt.style.use('seaborn-whitegrid')
@@ -157,7 +155,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+    
     def plot2():    
         #### PLOT 2 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
@@ -191,7 +189,7 @@ def pceb(): # Permanent/Character Event Banner
 
 
 
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)  
+      
     def plot3():   
         #### PLOT 3 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
@@ -312,11 +310,8 @@ def web(): # Weapon Event Banner
     
     # Returning plots
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)  
-    def plot4():    
-        st.markdown('### Probability Mass Function (PMF)')
-        xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
-
+      
+    def plot4():  
         #### PLOT 1 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
         plt.style.use('seaborn-whitegrid')
@@ -347,11 +342,8 @@ def web(): # Weapon Event Banner
 
 
 
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)   
+     
     def plot5():    
-        st.markdown('### Cumulative Distribution Function (CDF)')
-        xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
-
         #### PLOT 2 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
         plt.style.use('seaborn-whitegrid')
@@ -385,11 +377,8 @@ def web(): # Weapon Event Banner
 
 
 
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True) 
+    
     def plot6():    
-        st.markdown('### Distribution of Successful Pulls')
-        xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
-
         #### PLOT 3 ####
         fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
         plt.style.use('seaborn-whitegrid')
@@ -416,9 +405,17 @@ def web(): # Weapon Event Banner
         plt.xticks(np.arange(0, 81, 10))
         st.pyplot(fig)
         #################
-   
+        
+    st.markdown('### Probability Mass Function (PMF)')
+    xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
     plot4()
+    
+    st.markdown('### Cumulative Distribution Function (CDF)')
+    xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
     plot5()
+    
+    st.markdown('### Distribution of Successful Pulls')
+    xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
     plot6()
     
     st.markdown("---")
