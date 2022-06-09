@@ -219,35 +219,35 @@ def pceb(): # Permanent/Character Event Banner
         #################
     
     ### Returning plots
-#     st.markdown('### Probability Mass Function (PMF)')
-#     xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)  
-#     st.pyplot(plot1())
+    st.markdown('### Probability Mass Function (PMF)')
+    xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)  
+    st.pyplot(plot1())
     
-#     st.markdown('### Cumulative Distribution Function (CDF)')
-#     xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
-#     st.pyplot(plot2())
+    st.markdown('### Cumulative Distribution Function (CDF)')
+    xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
+    st.pyplot(plot2())
     
-#     st.markdown('### Distribution of Successful Pulls')
-#     xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
-#     st.pyplot(plot3())
+    st.markdown('### Distribution of Successful Pulls')
+    xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
+    st.pyplot(plot3())
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
-    def p1_slider():
-        st.markdown('### Probability Mass Function (PMF)')
-        xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)  
-        return st.pyplot(plot1())
+#     @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+#     def p1_slider():
+#         st.markdown('### Probability Mass Function (PMF)')
+#         xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)  
+#         return st.pyplot(plot1())
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
-    def p2_slider():
-        st.markdown('### Cumulative Distribution Function (CDF)')
-        xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
-        return st.pyplot(plot2())
+#     @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+#     def p2_slider():
+#         st.markdown('### Cumulative Distribution Function (CDF)')
+#         xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
+#         return st.pyplot(plot2())
     
-    @st.cache(allow_output_mutation = True, suppress_st_warning = True)
-    def p3_slider():
-        st.markdown('### Distribution of Successful Pulls')
-        xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
-        return st.pyplot(plot3())
+#     @st.cache(allow_output_mutation = True, suppress_st_warning = True)
+#     def p3_slider():
+#         st.markdown('### Distribution of Successful Pulls')
+#         xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
+#         return st.pyplot(plot3())
     
     p1_slider()
     p2_slider()
