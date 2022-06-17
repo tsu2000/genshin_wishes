@@ -76,9 +76,9 @@ def pceb(): # Permanent/Character Event Banner
     st.write("##")
     
     st.markdown('What each graph means:')
-    st.markdown('- **Probability Mass Function (PMF):** The base per-pull probability of obtaining a 5-Star Character on each individual pull after pity reset')
+    st.markdown('- **Base Pull Rate:** The base per-pull probability of obtaining a 5-Star Character on each individual pull after pity reset')
     st.markdown('- **Cumulative Distribution Function (CDF):** The **cumulative** probability of obtaining a 5-Star Character on your current pull or before that')
-    st.markdown('- **Distribution of Successful Pulls:** Where 5-Star Character drops are most likely to occur between the pity reset and hard pity')
+    st.markdown('- **Distribution of Successful Pulls (PMF):** Where 5-Star Character drops are most likely to occur between the pity reset and hard pity')
     
     st.write("###")
     
@@ -149,7 +149,7 @@ def pceb(): # Permanent/Character Event Banner
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
         # Title, Axes Labels
-        plt.title('Probability Mass Function (PMF) of obtaining a 5-Star Character at each pull after pity reset')
+        plt.title('Base Pull Rate of obtaining a 5-Star Character at each pull after pity reset')
         plt.ylabel('Probability')
         plt.xlabel('Number of Pulls')
 
@@ -219,7 +219,7 @@ def pceb(): # Permanent/Character Event Banner
         #################
     
     ### Returning plots
-    st.markdown('### Probability Mass Function (PMF)')
+    st.markdown('### Base Pull Rate')
     xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)  
     st.pyplot(plot1())
     
@@ -227,7 +227,7 @@ def pceb(): # Permanent/Character Event Banner
     xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
     st.pyplot(plot2())
     
-    st.markdown('### Distribution of Successful Pulls')
+    st.markdown('### Distribution of Successful Pulls (PMF)')
     xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
     st.pyplot(plot3())
     
@@ -252,9 +252,9 @@ def web(): # Weapon Event Banner
     st.write("##")
     
     st.markdown('What each graph means:')
-    st.markdown('- **Probability Mass Function (PMF):** The base per-pull probability of obtaining a 5-Star Weapon on each individual pull after pity reset')
+    st.markdown('- **Base Pull Rate:** The base per-pull probability of obtaining a 5-Star Weapon on each individual pull after pity reset')
     st.markdown('- **Cumulative Distribution Function (CDF):** The **cumulative probability** of obtaining a 5-Star Weapon on your current pull or before that')
-    st.markdown('- **Distribution of Successful Pulls:** Where 5-Star Weapon drops are most likely to occur between the pity reset and hard pity')
+    st.markdown('- **Distribution of Successful Pulls (PMF):** Where 5-Star Weapon drops are most likely to occur between the pity reset and hard pity')
     
     st.write("###")
     
@@ -325,7 +325,7 @@ def web(): # Weapon Event Banner
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
         # Title, Axes Labels
-        plt.title('Probability Mass Function (PMF) of obtaining a 5-Star Weapon at each pull after pity reset')
+        plt.title('Base Pull Rate of obtaining a 5-Star Weapon at each pull after pity reset')
         plt.ylabel('Probability')
         plt.xlabel('Number of Pulls')
 
@@ -395,7 +395,7 @@ def web(): # Weapon Event Banner
         #################
         
     ### Returning plots
-    st.markdown('### Probability Mass Function (PMF)')
+    st.markdown('### Base Pull Rate')
     xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
     st.pyplot(plot4())
     
@@ -403,7 +403,7 @@ def web(): # Weapon Event Banner
     xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
     st.pyplot(plot5())
 
-    st.markdown('### Distribution of Successful Pulls')
+    st.markdown('### Distribution of Successful Pulls (PMF)')
     xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
     st.pyplot(plot6())
 
