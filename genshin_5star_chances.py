@@ -413,4 +413,5 @@ def about():
 
 
 if __name__ == "__main__":
+    st.set_page_config(page_title = 'Genshin Impact 5★ Chances', page_icon = '📈')
     main()
