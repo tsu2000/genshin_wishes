@@ -1,6 +1,6 @@
 # genshin_5star_chances
 
-Calculates the chances relating to pulling a 5-Star Character/Weapon in the action RPG, Genshin Impact.
+Visualises the probability of pulling a 5-Star Character/Weapon based on current pity in Genshin Impact.
 
 **Link to Web App**:
 
