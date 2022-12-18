@@ -1,87 +1,69 @@
 import streamlit as st
-from streamlit import caching
 import numpy as np
 import matplotlib.pyplot as plt
-import collections
+import requests
+import io
 
+from streamlit_extras.badges import badge
 from collections import deque
-from scipy.stats import binom
-from scipy.stats import geom
+from scipy.stats import binom, geom
+from PIL import Image
 
 
-
-
-
-
-def main(): # Main title
-    st.title('Genshin Impact 5-Star Chances')
-    subtitle = '### A statistical exploration of 5-Star Drop Rates in Genshin Impact'
-    st.markdown(subtitle)
+# Main title
+def main(): 
+    col1, col2, col3 = st.columns([0.045, 0.28, 0.015])
     
-    st.markdown('This web app is for the data visualisation of the drop rates of a 5-Star Character or Weapon in the action role-playing game created by miHoYo, Genshin Impact. To observe and interact with the data visualisations, please select a banner from the box below.')
+    with col1:
+        url = 'https://github.com/tsu2000/genshin_5star_chances/raw/main/images/Genshin_Impact.png'
+        response = requests.get(url)
+        img = Image.open(io.BytesIO(response.content))
+        st.image(img, output_format = 'png')
 
-    topics = ['About',
-              '5-Star Drop Rate for Permanent/Chararacter Event Banners', 
-              '5-Star Drop Rate for Weapon Event Banners']
+    with col2:
+        st.title('Genshin Impact 5★ Chances')
+
+    with col3:
+        badge(type = 'github', name = 'tsu2000/genshin_5star_chances', url = 'https://github.com/tsu2000/genshin_5star_chances')
+    
+    st.markdown('### Statistics of 5★ Drop Rates in Genshin Impact')
+    
+    st.markdown('This web app is for the data visualisation of the drop rates of a 5★ Character or Weapon in Genshin Impact. To observe and interact with the data visualisations, please select a banner from the box below.')
+
+    topics = ['5★ Drop Rate for Permanent/Chararacter Event Banners', 
+              '5★ Drop Rate for Weapon Event Banners',
+              'About']
 
     topic = st.selectbox('Select a banner: ', topics)
 
+    st.markdown('---')
+
     if topic == topics[0]:
-        about()
-    elif topic == topics[1]:
         pceb()
-    elif topic == topics[2]:
+    elif topic == topics[1]:
         web()
+    elif topic == topics[2]:
+        about()
 
-        
-        
-        
-        
-       
-    
-def about(): # About the app
-    
-    st.components.v1.html("""<a href="https://github.com/tsu2000/genshin_5star_chances" target="_blank"><img src="https://img.shields.io/static/v1?label=tsu2000&message=genshin_5star_chances
-&color=blue&logo=github" alt="_blank"></a><a href="https://github.com/tsu2000/genshin_5star_chances" target="_blank"><img src="https://img.shields.io/github/stars/tsu2000/genshin_5star_chances?style=social" alt="tsu2000 - Genshin Impact 5-Star Chances"></a>""", height=28)
 
-    st.markdown("---")
-    st.markdown('### Resources used:')
-    st.markdown('This web application was inspired by the following posts, and builds on the statistical models of the first post on the HoYoLAB Forums in particular.')
-    st.markdown("- [**Statistical model for Genshin Impact's droprates - Post on HoYoLAB Forums by Sengalev, original by Cgg**](https://www.hoyolab.com/article/497840)")
-    st.write('####')
-    st.markdown('This infographic post on **Reddit** provides a simplified overview of what this app aims to illustrate that may be easier to understand for some:')
-    st.markdown("- [**Soft and hard pity explained based on 24M wishes - Post on r/Genshin_Impact by u/chaos-kaizer**](https://www.reddit.com/r/Genshin_Impact/comments/o9v0c0/soft_and_hard_pity_explained_based_on_24m_wishes)")
-    st.write('####')
-    st.markdown("### Visit Original Source's Main Website:")
-    st.markdown("- [**Genshin Wishes Official Website**](https://genshin-wishes.com) ")
-    
-    st.markdown("---")
-                
-    st.markdown('**Important Notice**: *This app is not affiliated with genshin-wishes.com or miHoYo. All technical details relating to current probability rates may be subject to change in the future. Genshin Impact and miHoYo are trademarks or registered trademarks of miHoYo. Genshin Impact © miHoYo.*')
-    
-    
-    
+# Permanent/Character Event Banner    
+def pceb(): 
+    st.markdown('### Permanent/Character Event Banner Statistics:')
+    st.markdown('The probabilities for obtaining a 5★ Character (in number of pulls after pity reset) are as follows: ')
+    st.markdown('- **Base Rate:** Before **74** pulls - *Low chance (<1%)*')
+    st.markdown('- **Soft Pity:** From **74** pulls to **89** pulls - *Chance increases exponentially*')
+    st.markdown('- **Hard Pity:** Your **90**th Pull - *Guaranteed 5★*')
 
-    
-    
-    
-def pceb(): # Permanent/Character Event Banner
-    
-    st.markdown('## Permanent/Character Event Banner Statistics:')
-    st.markdown('The probabilities for obtaining a 5-Star Character (in number of pulls after pity reset) are as follows: ')
-    st.markdown('- **Base Rate:** Before 74 pulls - *Low chance*')
-    st.markdown('- **Soft Pity:** From 74 pulls to 89 pulls - *Chance increases exponentially*')
-    st.markdown('- **Hard Pity:** 90th Pull - *Guaranteed 5-Star*')
-    
-    st.write("##")
+    st.markdown('&nbsp;')
     
     st.markdown('What each graph means:')
-    st.markdown('- **Base Pull Rate:** The base per-pull probability of obtaining a 5-Star Character on each individual pull after pity reset')
-    st.markdown('- **Cumulative Distribution Function (CDF):** The **cumulative** probability of obtaining a 5-Star Character on your current pull or before that')
-    st.markdown('- **Distribution of Successful Pulls (PMF):** Where 5-Star Character drops are most likely to occur between the pity reset and hard pity')
-    
-    st.write("###")
-    
+    st.markdown('- **Base Pull Rate:** The base per-pull probability of obtaining a 5★ Character on each individual pull after pity reset')
+    st.markdown('- **Cumulative Probability (CDF):** The **cumulative** probability of obtaining a 5★ Character on your current pull or before that')
+    st.markdown('- **Distribution of Successful Pulls (PMF):** Where 5★ Character drops are most likely to occur between the pity reset and hard pity')
+
+    st.markdown('---')
+
+    @st.cache
     def roll_probs(x):
         if x < 74:
             return 0.006
@@ -93,6 +75,7 @@ def pceb(): # Permanent/Character Event Banner
     roll_dict = {num: roll_probs(num) for num in range(1, 91)}
     
     # Calculating cumulative probabilities
+    @st.cache
     def prob_mul(n):
         if n == 75:
             return (1 - roll_dict[74])
@@ -102,7 +85,8 @@ def pceb(): # Permanent/Character Event Banner
     prob_75to89 = [binom.cdf(0, 73, 0.006) * prob_mul(x) * roll_dict[x] for x in range(75, 90)]
     prob_75to89 = np.cumsum(prob_75to89) + geom.cdf(73, 0.006) + binom.cdf(0, 73, 0.006) * roll_dict[74]
     prob_75to89_dict = {num: prob_75to89[num - 75] for num in range(75, 90)}
-    
+
+    @st.cache
     def roll_cum_probs(x):
         if x < 74:
             return geom.cdf(x, 0.006)
@@ -143,13 +127,13 @@ def pceb(): # Permanent/Character Event Banner
 
         # Text box
         rxi = round(roll_dict[xi], 8)
-        textstr = "\n".join([r'Base Rate of obtaining a 5-Star Character on Pull No. $\bf{%s}$:' % str(xi),
+        textstr = "\n".join([r'Base Rate of obtaining a 5-star Character on Pull No. $\bf{%s}$:' % str(xi),
                              f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'lightcyan')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
         # Title, Axes Labels
-        plt.title('Base Pull Rate of obtaining a 5-Star Character at each pull after pity reset')
+        plt.title('Base Pull Rate of obtaining a 5-star Character at each pull after pity reset')
         plt.ylabel('Probability')
         plt.xlabel('Number of Pulls')
 
@@ -171,18 +155,18 @@ def pceb(): # Permanent/Character Event Banner
         plt.text(xc - 7, roll_cum_dict[xc] + 0.025, '{} pull(s)'.format(int(xc)), fontsize = 10, color = 'r')
 
         # Horizontal line (Median Probability)
-        plt.text(-3, 0.52, 'Median (50% chance of obtaining a 5-Star Character before/after horizontal line) ', fontsize = 10)
+        plt.text(-3, 0.52, 'Median (50% chance of obtaining a 5-star Character before/after horizontal line) ', fontsize = 10)
         plt.axhline(0.500, linestyle = ':', color = 'black')
 
         # Text box
         rxc = round(roll_cum_dict[xc], 8)
-        textstr = "\n".join([r'Chance of obtaining a 5-Star Character by $\bf{%s}$ pull(s) or less:' % str(xc),
+        textstr = "\n".join([r'Chance of obtaining a 5-star Character by $\bf{%s}$ pull(s) or less:' % str(xc),
                              f'{rxc}' + ' (around ' + r"$\bf" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'wheat')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
-        plt.title('Cumulative Distribution Function (CDF) of obtaining an 5-Star Character within X number of pulls')
-        plt.ylabel('Cumulative Probability of getting a 5-Star Character', labelpad = 15)
+        plt.title(f'Cumulative Distribution Function (CDF) of obtaining an 5-star Character within {xc} number of pulls')
+        plt.ylabel('Cumulative Probability of getting a 5-star Character', labelpad = 15)
         plt.xlabel('Cumulative Number of Pulls', labelpad = 10)
 
         plt.xticks(np.arange(0, 91, 10))
@@ -204,14 +188,14 @@ def pceb(): # Permanent/Character Event Banner
 
         # Text box
         rxs = round(succ_pull_dict[xs], 8)
-        textstr = "\n".join([r'Actual Probability of successfully obtaining a 5-Star Character on Pull No. $\bf{%s}$:' % str(xs),
+        textstr = "\n".join([r'Actual Probability of successfully obtaining a 5-star Character on Pull No. $\bf{%s}$:' % str(xs),
                              f'{rxs}' + ' (around ' + r"$\bf" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'greenyellow')
         plt.text(-1.25, 0.105, textstr, fontsize = 12, va = 'top', bbox = props)
 
         # Title, Axes Labels
-        plt.title('Distribution of Successful Pulls (Where 5-Star Characters are pulled the most)')
-        plt.ylabel('Probability of getting a 5-Star Character', labelpad = 15)
+        plt.title('Distribution of Successful Pulls (Where 5-star Characters are pulled the most)')
+        plt.ylabel('Probability of getting a 5-star Character', labelpad = 15)
         plt.xlabel('Number of Pulls', labelpad = 10)
 
         plt.xticks(np.arange(0, 91, 10))
@@ -220,44 +204,43 @@ def pceb(): # Permanent/Character Event Banner
     
     ### Returning plots
     st.markdown('### Base Pull Rate')
-    xi = st.slider('Choose number of pulls after your last 5-Star Character to see the base probability rate of getting a 5-star character at each number of pulls at your current level:', 1, 90, 30)  
+    xi = st.slider('Choose number of pulls after your last 5★ Character to see the base probability rate of getting a 5★ character at each number of pulls at your current level:', 1, 90, 30)  
     st.pyplot(plot1())
+
+    st.markdown('---')
     
-    st.markdown('### Cumulative Distribution Function (CDF)')
-    xc = st.slider('Choose number of pulls after your last 5-Star Character to see the cumulative probabilities of getting a 5-star character within your set number of pulls:', 1, 90, 30)
+    st.markdown('### Cumulative Probability')
+    xc = st.slider('Choose number of pulls after your last 5★ Character to see the cumulative probability of getting a 5★ character within your set number of pulls:', 1, 90, 30)
     st.pyplot(plot2())
+
+    st.markdown('---')
     
-    st.markdown('### Distribution of Successful Pulls (PMF)')
-    xs = st.slider('Choose number of pulls after your last 5-Star Character to see how likely you are to pull a 5-star character at your current level:', 1, 90, 30)
+    st.markdown('### Distribution of Successful Pulls')
+    xs = st.slider('Choose number of pulls after your last 5★ Character to see how likely you are to pull a 5★ character at your exact current pity:', 1, 90, 30)
     st.pyplot(plot3())
     
     st.markdown("---")
-    st.markdown('**Final Note:** These graphs do not take into account if you lose the 50/50 when pulling on the character event banner for a featured character. It only calculates your chances of getting **a** 5-Star character at the set amount of pulls after your pity resets.')
-    
-  
-    
-    
-    
-    
 
-def web(): # Weapon Event Banner
-    
-    st.markdown('## Weapon Event Banner Statistics:')
-    st.markdown('The probabilities for obtaining a 5-Star Weapon (in number of pulls after pity reset) are as follows:')
+
+# Weapon Event Banner
+def web(): 
+    st.markdown('### Weapon Event Banner Statistics:')
+    st.markdown('The probabilities for obtaining a 5★ Weapon (in number of pulls after pity reset) are as follows:')
   
-    st.markdown('- **Base Rate:** Before 63 pulls - *Low chance*')
-    st.markdown('- **Soft Pity:** From 63 pulls to 76 pulls - *Chance increases exponentially*')
-    st.markdown('- **Hard Pity:** 77th Pull - *Guaranteed 5-Star*')
-    
-    st.write("##")
+    st.markdown('- **Base Rate:** Before **63** pulls - *Low chance (<1%)*')
+    st.markdown('- **Soft Pity:** From **63** pulls to **76** pulls - *Chance increases exponentially*')
+    st.markdown('- **Hard Pity:** Your **77**th Pull - *Guaranteed 5★*')
+
+    st.markdown('&nbsp;')
     
     st.markdown('What each graph means:')
-    st.markdown('- **Base Pull Rate:** The base per-pull probability of obtaining a 5-Star Weapon on each individual pull after pity reset')
-    st.markdown('- **Cumulative Distribution Function (CDF):** The **cumulative probability** of obtaining a 5-Star Weapon on your current pull or before that')
-    st.markdown('- **Distribution of Successful Pulls (PMF):** Where 5-Star Weapon drops are most likely to occur between the pity reset and hard pity')
+    st.markdown('- **Base Pull Rate:** The base per-pull probability of obtaining a 5★ Weapon on each individual pull after pity reset')
+    st.markdown('- **Cumulative Probability (CDF):** The **cumulative probability** of obtaining a 5★ Weapon on your current pull or before that')
+    st.markdown('- **Distribution of Successful Pulls (PMF):** Where 5★ Weapon drops are most likely to occur between the pity reset and hard pity')
     
-    st.write("###")
-    
+    st.markdown('---')
+
+    @st.cache
     def roll_probs(x):
         if x < 63:
             return 0.007
@@ -269,6 +252,7 @@ def web(): # Weapon Event Banner
     roll_dict = {num: roll_probs(num) for num in range(1, 78)}
     
     # Calculating cumulative probabilities
+    @st.cache
     def prob_mul(n):
         if n == 64:
             return (1 - roll_dict[63])
@@ -279,6 +263,7 @@ def web(): # Weapon Event Banner
     prob_64to76 = np.cumsum(prob_64to76) + geom.cdf(62, 0.007) + binom.cdf(0, 62, 0.007) * roll_dict[63]
     prob_64to76_dict = {num: prob_64to76[num - 64] for num in range(64, 77)}
     
+    @st.cache
     def roll_cum_probs(x):
         if x < 63:
             return geom.cdf(x, 0.007)
@@ -319,13 +304,13 @@ def web(): # Weapon Event Banner
 
         # Text box
         rxi = round(roll_dict[xi], 8)
-        textstr = "\n".join([r'Base Rate of obtaining a 5-Star Weapon on Pull No. $\bf{%s}$:' % str(xi),
+        textstr = "\n".join([r'Base Rate of obtaining a 5-star Weapon on Pull No. $\bf{%s}$:' % str(xi),
                              f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'lightcyan')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
         # Title, Axes Labels
-        plt.title('Base Pull Rate of obtaining a 5-Star Weapon at each pull after pity reset')
+        plt.title('Base Pull Rate of obtaining a 5-star Weapon at each pull after pity reset')
         plt.ylabel('Probability')
         plt.xlabel('Number of Pulls')
 
@@ -347,18 +332,18 @@ def web(): # Weapon Event Banner
         plt.text(xc - 7, roll_cum_dict[xc] + 0.025, '({} pulls)'.format(int(xc)), fontsize = 10, color = 'r')
 
         # Horizontal line (Median Probability)
-        plt.text(-3, 0.52, 'Median (50% chance of obtaining a 5-Star Weapon before/after horizontal line) ', fontsize = 10)
+        plt.text(-3, 0.52, 'Median (50% chance of obtaining a 5-star Weapon before/after horizontal line) ', fontsize = 10)
         plt.axhline(0.500, linestyle = ':', color = 'black')
 
         # Text box
         rxc = round(roll_cum_dict[xc], 8)
-        textstr = "\n".join([r'Chance of obtaining a 5-Star Weapon by $\bf{%s}$ pull(s) or less:' % str(xc),
+        textstr = "\n".join([r'Chance of obtaining a 5-star Weapon by $\bf{%s}$ pull(s) or less:' % str(xc),
                              f'{rxc}' + ' (around ' + r"$\bf" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'wheat')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
-        plt.title('Cumulative Distribution Function (CDF) of obtaining an 5-Star Weapon within X number of pulls')
-        plt.ylabel('Cumulative Probability of getting a 5-Star Weapon', labelpad = 15)
+        plt.title(f'Cumulative Distribution Function (CDF) of obtaining an 5-star Weapon within {xc} number of pulls')
+        plt.ylabel('Cumulative Probability of getting a 5-star Weapon', labelpad = 15)
         plt.xlabel('Cumulative Number of Pulls', labelpad = 10)
 
         plt.xticks(np.arange(0, 81, 10))
@@ -380,14 +365,14 @@ def web(): # Weapon Event Banner
 
         # Text box
         rxs = round(succ_pull_dict[xs], 8)
-        textstr = "\n".join([r'Actual Probability of successfully obtaining a 5-Star Weapon on Pull No. $\bf{%s}$:' % str(xs),
+        textstr = "\n".join([r'Actual Probability of successfully obtaining a 5★ Weapon on Pull No. $\bf{%s}$:' % str(xs),
                              f'{rxs}' + ' (around ' + r"$\bf" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'greenyellow')
         plt.text(-1.25, 0.115, textstr, fontsize = 12, va = 'top', bbox = props)
 
         # Title, Axes Labels
-        plt.title('Distribution of Successful Pulls (Where 5-Star Weapons are pulled the most)')
-        plt.ylabel('Probability of getting a 5-Star Weapon', labelpad = 15)
+        plt.title('Distribution of Successful Pulls (Where 5-star Weapons are pulled the most)')
+        plt.ylabel('Probability of getting a 5-star Weapon', labelpad = 15)
         plt.xlabel('Number of Pulls', labelpad = 10)
 
         plt.xticks(np.arange(0, 81, 10))
@@ -396,20 +381,36 @@ def web(): # Weapon Event Banner
         
     ### Returning plots
     st.markdown('### Base Pull Rate')
-    xi = st.slider('Choose number of pulls after your last 5-Star Weapon to see the base probability rate of getting a 5-star Weapon at each number of pulls at your current level:', 1, 77, 25)
+    xi = st.slider('Choose number of pulls after your last 5★ Weapon to see the base probability rate of getting a 5★ Weapon at each number of pulls at your current level:', 1, 77, 25)
     st.pyplot(plot4())
+
+    st.markdown('---')
     
-    st.markdown('### Cumulative Distribution Function (CDF)')
-    xc = st.slider('Choose number of pulls after your last 5-Star Weapon to see the cumulative probabilities of getting a 5-star Weapon within your set number of pulls:', 1, 77, 25)
+    st.markdown('### Cumulative Probability')
+    xc = st.slider('Choose number of pulls after your last 5★ Weapon to see the cumulative probability of getting a 5★ Weapon within your set number of pulls:', 1, 77, 25)
     st.pyplot(plot5())
 
-    st.markdown('### Distribution of Successful Pulls (PMF)')
-    xs = st.slider('Choose number of pulls after your last 5-Star Weapon to see how likely you are to pull a 5-Star Weapon at your current level:', 1, 77, 25)
+    st.markdown('---')
+
+    st.markdown('### Distribution of Successful Pulls')
+    xs = st.slider('Choose number of pulls after your last 5★ Weapon to see how likely you are to pull a 5★ Weapon at your exact current pity:', 1, 77, 25)
     st.pyplot(plot6())
 
     st.markdown("---")
-    st.markdown('**Final Note:** These graphs do not take into account if you lose the 50/50 when pulling on the weapon event banner for a featured event weapon. It only calculates your chances of getting **a** 5-Star Weapon at the set amount of pulls after your pity resets.')
 
-    
+
+# About the app   
+def about(): 
+    st.markdown('### Resources used:')
+    st.markdown('This web application builds on the statistical models from the following social media posts:')
+    st.markdown("- [**Statistical model for Genshin Impact's droprates - Post on HoYoLAB Forums by Sengalev, original by Cgg**](https://www.hoyolab.com/article/497840)")
+    st.markdown('This infographic post on **Reddit** provides a simplified overview of what this app aims to illustrate that may be easier to understand for some:')
+    st.markdown("- [**Soft and hard pity explained based on 24M wishes - Post on r/Genshin_Impact by u/chaos-kaizer**](https://www.reddit.com/r/Genshin_Impact/comments/o9v0c0/soft_and_hard_pity_explained_based_on_24m_wishes)")
+    st.markdown("### Visit Genshin-Wishes Main Website:")
+    st.markdown("- [**Genshin Wishes Official Website**](https://genshin-wishes.com)")
+    st.markdown("---")
+    st.markdown('**Important Notice**: *This app is not affiliated with genshin-wishes.com or HoYoVerse. All technical details relating to current probability rates may be subject to change in the future.*')    
+
+
 if __name__ == "__main__":
     main()
