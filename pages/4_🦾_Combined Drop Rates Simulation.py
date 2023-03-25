@@ -54,7 +54,7 @@ def main():
 
     final_sim = combined_freq_graph(n_iter = num_simulations, pity_4 = pity_count_4star, pity_5 = pity_count_5star, banner_type = bt, num_wishes = wishes_count)
 
-    st.markdown(f'### Wish distribution - {{banner_select}}')
+    st.markdown(f'### Wish distribution - {banner_select}')
     st.altair_chart(final_sim[0], use_container_width = True)
 
     st.markdown('### DataFrame Results:')
