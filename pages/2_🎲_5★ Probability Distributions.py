@@ -5,7 +5,7 @@ import seaborn as sns
 import requests
 import io
 
-from ..pity_probs import char_roll_5star, weap_roll_5star
+from pity_probs import char_roll_5star, weap_roll_5star
 from streamlit_extras.badges import badge
 from collections import deque
 from scipy.stats import binom, geom
