@@ -7,7 +7,7 @@ import requests
 import random
 import io
 
-from ..pity_probs import char_roll_5star, char_roll_4star, weap_roll_5star, weap_roll_4star
+from pity_probs import char_roll_5star, char_roll_4star, weap_roll_5star, weap_roll_4star
 from collections import Counter
 from streamlit_extras.badges import badge
 from altair.vegalite.v4.api import LayerChart
