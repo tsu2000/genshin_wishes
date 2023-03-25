@@ -68,7 +68,7 @@ def simulation_5star():
     st.markdown('### Summary statistics') 
     st.plotly_chart(result[0], use_container_width= True)
 
-    st.markdown(f'### Wish distribution - {{banner_select}}')
+    st.markdown(f'### Wish distribution - {banner_select}')
     freq_graph(result[1], wishes_count, pity_count)
 
     st.markdown('---')
@@ -96,7 +96,7 @@ def simulation_4star():
     st.markdown('### Summary statistics') 
     st.plotly_chart(result[0], use_container_width= True)
 
-    st.markdown(f'### Wish distribution - {{banner_select}}')
+    st.markdown(f'### Wish distribution - {banner_select}')
     freq_graph(result[1], wishes_count, pity_count)
 
     st.markdown('---')
