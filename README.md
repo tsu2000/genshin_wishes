@@ -1,4 +1,4 @@
-# genshin_5star_chances
+# genshin_wishes
 
 Visualises the probability of pulling a 5-Star Character/Weapon based on current pity in Genshin Impact.
 
