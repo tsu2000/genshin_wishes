@@ -20,7 +20,7 @@ def main():
     with col3:
         badge(type = 'github', name = 'tsu2000/genshin_wishes', url = 'https://github.com/tsu2000/genshin_wishes')
 
-    st.markdown('### 🏠 &nbsp; Statistics-Based Web Apps for wishing in Genshin Impact')
+    st.markdown('### 🏠 &nbsp; Statistics-based apps about Genshin Impact wishes')
     st.markdown('Welcome to the homepage for all Streamlit-based web applications centered around wishing statistics in Genshin Impact! To start using a feature, navigate to the sidebar on the left.')
 
     st.markdown('---')
