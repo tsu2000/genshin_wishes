@@ -45,7 +45,7 @@ def main():
     max_pity_5star = 90 if bt == 'character' else 77
     max_pity_4star = 10 if bt == 'character' else 9
     with col1:
-        wishes_count = st.number_input('Enter number of wishes you have:', value = 100, min_value = 1, max_value = 100000)
+        wishes_count = st.number_input('Enter number of wishes you have:', value = 100, min_value = 1, max_value = 10000)
     with col2:
         pity_count_5star =  st.number_input('Enter current 5★ pity you are at:', value = 1, min_value = 1, max_value = max_pity_5star)
     with col3:
