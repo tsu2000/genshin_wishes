@@ -14,7 +14,7 @@ from altair.vegalite.v4.api import LayerChart
 from typing import Dict, Tuple
 from PIL import Image
 
-@st.cache_data
+
 def main():
     col1, col2, col3 = st.columns([0.045, 0.28, 0.015])
     
@@ -83,7 +83,7 @@ def main():
 
     st.markdown('---')
 
-@st.cache_data
+
 def simulate_rolls(prob_4: Dict[int, float], prob_5: Dict[int, float], pity_4: int, pity_5: int, num_rolls: int) -> Tuple[int, int, int]:
     '''
     
@@ -121,7 +121,7 @@ def simulate_rolls(prob_4: Dict[int, float], prob_5: Dict[int, float], pity_4: i
             
     return item3_count, item4_count, item5_count
 
-@st.cache_data
+
 def simulation(num_iter: int, banner_type: str, start_pity_4: int, start_pity_5: int, wish_count: int) -> pd.DataFrame:
 
     if banner_type == 'character':
@@ -188,7 +188,7 @@ def combined_freq_graph(n_iter: int, pity_4: int, pity_5: int, banner_type: str,
     # Show the chart
     return chart, source
 
-@st.cache_data
+
 def summary_table(data: pd.DataFrame):
     fig = go.Figure(data = [go.Table(columnwidth = [2, 1.75],
                             header = dict(values = ['Rarity', 'Count', 'Mean', 'Std Dev', 'Min', '25%', 'Median', '75%', 'Max', 'Mode'],
