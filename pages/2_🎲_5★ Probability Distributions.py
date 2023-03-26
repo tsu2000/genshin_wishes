@@ -13,7 +13,6 @@ from PIL import Image
 
 
 # Main title
-@st.cache_data
 def main(): 
     col1, col2, col3 = st.columns([0.045, 0.28, 0.015])
     
@@ -49,7 +48,7 @@ def main():
         about()
 
 
-# Permanent/Character Event Banner    
+# Permanent/Character Event Banner 
 @st.cache_data
 def pceb(): 
     st.markdown('### Permanent/Character Event Banner Statistics:')
