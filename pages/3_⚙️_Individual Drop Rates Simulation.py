@@ -13,7 +13,7 @@ from altair.vegalite.v4.api import LayerChart
 from typing import Dict, Tuple, Any
 from PIL import Image
 
-@st.cache_data
+
 def main():
     col1, col2, col3 = st.columns([0.045, 0.28, 0.015])
     
@@ -45,7 +45,7 @@ def main():
     elif topic == topics[1]:
         simulation_4star()
 
-@st.cache_data    
+
 def simulation_5star():
     st.markdown('## 5★ Drop Rate Simulation')
 
@@ -73,7 +73,7 @@ def simulation_5star():
 
     st.markdown('---')
 
-@st.cache_data
+
 def simulation_4star():
     st.markdown('## 4★ Drop Rate Simulation')
 
@@ -101,7 +101,7 @@ def simulation_4star():
 
     st.markdown('---')
 
-@st.cache_data
+
 def get_item_count(num_tries: int, pity: int, prob_dict: Dict[int, float]) -> int:
     count = 0
     for i in range(num_tries):
@@ -143,7 +143,7 @@ def summary_statistics(array: pd.Series):
     fig.update_layout(height = 80, width = 700, margin = dict(l = 5, r = 5, t = 5, b = 5))
     return fig
 
-@st.cache_data
+
 def wish_simulation5(num_tries: int, pity: int, n_iter: int, banner_type: str) -> Tuple[Any, pd.DataFrame]:    
     if banner_type == 'weapon':
         arr5 = pd.Series([get_item_count(num_tries, pity, weap_roll_5star) for j in range(n_iter)])
@@ -163,7 +163,7 @@ def wish_simulation5(num_tries: int, pity: int, n_iter: int, banner_type: str) -
 
     return summary_statistics(arr5), df5.sort_index(axis = 0)
     
-@st.cache_data
+
 def wish_simulation4(num_tries: int, pity: int, n_iter: int, banner_type: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
     if banner_type == 'weapon':
         arr4 = pd.Series([get_item_count(num_tries, pity, weap_roll_4star) for j in range(n_iter)])
