@@ -49,7 +49,6 @@ def main():
 
 
 # Permanent/Character Event Banner 
-@st.cache_data
 def pceb(): 
     st.markdown('### Permanent/Character Event Banner Statistics:')
     st.markdown('The probabilities for obtaining a 5★ Character (in number of pulls after pity reset) are as follows: ')
@@ -214,7 +213,6 @@ def pceb():
 
 
 # Weapon Event Banner
-@st.cache_data
 def web(): 
     st.markdown('### Weapon Event Banner Statistics:')
     st.markdown('The probabilities for obtaining a 5★ Weapon (in number of pulls after pity reset) are as follows:')
