@@ -15,7 +15,7 @@ from PIL import Image
 
 
 def main():
-    col1, col2, col3 = st.columns([0.045, 0.28, 0.015])
+    col1, col2 = st.columns([0.045, 0.28])
     
     with col1:
         url = 'https://github.com/tsu2000/genshin_wishes/raw/main/images/simulation_2.png'
@@ -25,9 +25,6 @@ def main():
 
     with col2:
         st.title('Drop Rate Simulator')
-
-    with col3:
-        badge(type = 'github', name = 'tsu2000/genshin_wishes', url = 'https://github.com/tsu2000/genshin_wishes')
 
     st.markdown('### 🕹️ &nbsp; Combined 3★/4★/5★ drop rate simulation')
 
