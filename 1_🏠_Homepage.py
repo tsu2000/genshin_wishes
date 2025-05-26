@@ -26,8 +26,8 @@ def main():
     st.markdown('---')
 
     st.markdown('#### Current Features:')
-    st.markdown('- 🎲 **5★ Wish System Overview**: Data visualisations and statistical explanations behind the wish and pity system probability rates in Genshin Impact (for 5★ items/characters).')
-    st.markdown('- 🕹️ **Drop Rate Simulator**: Customize your wish history to simulate expected outcomes based on pity count, banner type, and number of pulls.')
+    st.markdown('- 🎲 **5★ Wish System Overview**: Data visualisations and statistical explanations behind wishing and the pity system probability rates in Genshin Impact (for 5★ items/characters).')
+    st.markdown('- 🕹️ **Drop Rate Simulator**: Input your wish history to simulate expected outcomes based on pity count, banner type, and number of pulls.')
 
     st.markdown('---')
 
