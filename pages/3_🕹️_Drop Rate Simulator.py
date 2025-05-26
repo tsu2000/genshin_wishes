@@ -10,7 +10,6 @@ import io
 from pity_probs import char_roll_5star, char_roll_4star, weap_roll_5star, weap_roll_4star
 from collections import Counter
 from streamlit_extras.badges import badge
-from altair.vegalite.v4.api import LayerChart
 from typing import Dict, Tuple
 from PIL import Image
 
@@ -25,14 +24,14 @@ def main():
         st.image(img, output_format = 'png')
 
     with col2:
-        st.title('Genshin Gacha Simulation')
+        st.title('Drop Rate Simulator')
 
     with col3:
         badge(type = 'github', name = 'tsu2000/genshin_wishes', url = 'https://github.com/tsu2000/genshin_wishes')
 
-    st.markdown('### 🦾 &nbsp; Combined 3★/4★/5★ drop rate simulation')
+    st.markdown('### 🕹️ &nbsp; Combined 3★/4★/5★ drop rate simulation')
 
-    st.markdown('This web app simulates the **combined** drop rates of 4★ and 5★ characters/weapons and resulting 3★ drops in Genshin Impact according to theoretical data. Note that 5★ drops override 4★ drops in this simulation, even if the 4★ pity is at guaranteed. For individual 4★ and 5★ probabilities, view the other probability simulation page. **Note:** Entering a large number of wishes in user input results in exponentially slower loading times.')
+    st.markdown('This web app simulates the **combined** in-game drop rates of 4★ and 5★ characters/weapons and resulting 3★ drops in Genshin Impact according to theoretical data. Note that 5★ drops override 4★ drops in this simulation, even if the 4★ pity is at guaranteed.')
 
     st.markdown('---')
 
@@ -50,7 +49,7 @@ def main():
         pity_count_5star =  st.number_input('Enter current 5★ pity you are at:', value = 1, min_value = 1, max_value = max_pity_5star)
     with col3:
         pity_count_4star =  st.number_input('Enter current 4★ pity you are at:', value = 1, min_value = 1, max_value = max_pity_4star)
-    num_simulations = st.slider('Select number of iterations for the simulation:', value = 10000, min_value = 100, max_value = 100000)
+    num_simulations = st.slider('Select number of iterations for the simulation:', value = 10000, min_value = 100, max_value = 20000)
 
     final_sim = combined_freq_graph(n_iter = num_simulations, pity_4 = pity_count_4star, pity_5 = pity_count_5star, banner_type = bt, num_wishes = wishes_count)
 
@@ -123,7 +122,6 @@ def simulate_rolls(prob_4: Dict[int, float], prob_5: Dict[int, float], pity_4: i
 
 
 def simulation(num_iter: int, banner_type: str, start_pity_4: int, start_pity_5: int, wish_count: int) -> pd.DataFrame:
-
     if banner_type == 'character':
         prob_4, prob_5 = char_roll_4star, char_roll_5star
         
@@ -140,7 +138,7 @@ def simulation(num_iter: int, banner_type: str, start_pity_4: int, start_pity_5:
     return df
 
 
-def combined_freq_graph(n_iter: int, pity_4: int, pity_5: int, banner_type: str, num_wishes: int) -> LayerChart:
+def combined_freq_graph(n_iter: int, pity_4: int, pity_5: int, banner_type: str, num_wishes: int):
     '''
     A function that simulates the number of 3★, 4★ and 5★ drops obtained from a specified number of gacha rolls.
 
@@ -207,5 +205,5 @@ def summary_table(data: pd.DataFrame):
 
 
 if __name__ == "__main__":
-    st.set_page_config(page_title = 'Genshin Wish Stats', page_icon = '🦾')
+    st.set_page_config(page_title = 'Genshin Impact WishStats', page_icon = '🕹️')
     main()
