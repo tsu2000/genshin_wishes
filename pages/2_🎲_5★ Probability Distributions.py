@@ -14,7 +14,7 @@ from PIL import Image
 
 # Main title
 def main(): 
-    col1, col2, col3 = st.columns([0.045, 0.28, 0.015])
+    col1, col2 = st.columns([0.045, 0.28])
     
     with col1:
         url = 'https://github.com/tsu2000/genshin_wishes/raw/main/images/gacha.png'
@@ -23,10 +23,7 @@ def main():
         st.image(img, output_format = 'png')
 
     with col2:
-        st.title('Genshin Impact 5★ Chances')
-
-    with col3:
-        badge(type = 'github', name = 'tsu2000/genshin_wishes', url = 'https://github.com/tsu2000/genshin_wishes')
+        st.title('5★ Wish System Overview')
     
     st.markdown('### 🎲 &nbsp; Statistics of 5★ Drop Rates in Genshin Impact')
     
@@ -107,7 +104,7 @@ def pceb():
     ### Defining plots
     def plot1():   
         #### PLOT 1 ####
-        fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
+        fig, ax = plt.subplots(figsize = (12, 6), dpi = 300)
         sns.set_style('whitegrid')
 
         ax = plt.plot(roll_dict.keys(), roll_dict.values(), color = 'blue')
@@ -120,7 +117,7 @@ def pceb():
         # Text box
         rxi = round(roll_dict[xi], 8)
         textstr = "\n".join([r'Base Rate of obtaining a 5-star Character on Pull No. $\bf{%s}$:' % str(xi),
-                             f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
+                             f'{rxi}' + ' (around ' + r"$\bf{" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'lightcyan')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
@@ -135,7 +132,7 @@ def pceb():
 
     def plot2():    
         #### PLOT 2 ####
-        fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
+        fig, ax = plt.subplots(figsize = (12, 6), dpi = 300)
         sns.set_style('whitegrid')
 
         plt.plot(roll_cum_dict.keys(), roll_cum_dict.values(), color = 'red')
@@ -152,7 +149,7 @@ def pceb():
         # Text box
         rxc = round(roll_cum_dict[xc], 8)
         textstr = "\n".join([r'Chance of obtaining a 5-star Character by $\bf{%s}$ pull(s) or less:' % str(xc),
-                             f'{rxc}' + ' (around ' + r"$\bf" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
+                             f'{rxc}' + ' (around ' + r"$\bf{" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'wheat')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
@@ -166,7 +163,7 @@ def pceb():
 
     def plot3():   
         #### PLOT 3 ####
-        fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
+        fig, ax = plt.subplots(figsize = (12, 6), dpi = 300)
         sns.set_style('whitegrid')
 
         plt.plot(succ_pull_dict.keys(), succ_pull_dict.values(), color = 'green')
@@ -179,7 +176,7 @@ def pceb():
         # Text box
         rxs = round(succ_pull_dict[xs], 8)
         textstr = "\n".join([r'Actual Probability of successfully obtaining a 5-star Character on Pull No. $\bf{%s}$:' % str(xs),
-                             f'{rxs}' + ' (around ' + r"$\bf" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
+                             f'{rxs}' + ' (around ' + r"$\bf{" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'greenyellow')
         plt.text(-1.25, 0.105, textstr, fontsize = 12, va = 'top', bbox = props)
 
@@ -272,7 +269,7 @@ def web():
     ### Defining plots
     def plot4():    
         #### PLOT 4 ####
-        fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
+        fig, ax = plt.subplots(figsize = (12, 6), dpi = 300)
         sns.set_style('whitegrid')
 
         ax = plt.plot(roll_dict.keys(), roll_dict.values(), color = 'blue')
@@ -285,7 +282,7 @@ def web():
         # Text box
         rxi = round(roll_dict[xi], 8)
         textstr = "\n".join([r'Base Rate of obtaining a 5-star Weapon on Pull No. $\bf{%s}$:' % str(xi),
-                             f'{rxi}' + ' (around ' + r"$\bf" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
+                             f'{rxi}' + ' (around ' + r"$\bf{" + str(round(rxi * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'lightcyan')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
@@ -300,7 +297,7 @@ def web():
 
     def plot5():    
         #### PLOT 2 ####
-        fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
+        fig, ax = plt.subplots(figsize = (12, 6), dpi = 300)
         sns.set_style('whitegrid')
 
         plt.plot(roll_cum_dict.keys(), roll_cum_dict.values(), color = 'red')
@@ -317,7 +314,7 @@ def web():
         # Text box
         rxc = round(roll_cum_dict[xc], 8)
         textstr = "\n".join([r'Chance of obtaining a 5-star Weapon by $\bf{%s}$ pull(s) or less:' % str(xc),
-                             f'{rxc}' + ' (around ' + r"$\bf" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
+                             f'{rxc}' + ' (around ' + r"$\bf{" + str(round(rxc * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'wheat')
         plt.text(-1.25, 1, textstr, fontsize = 12, va = 'top', bbox = props)
 
@@ -331,7 +328,7 @@ def web():
 
     def plot6():    
         #### PLOT 6 ####
-        fig, ax = plt.subplots(figsize = (12, 6), dpi = 200)
+        fig, ax = plt.subplots(figsize = (12, 6), dpi = 300)
         sns.set_style('whitegrid')
 
         plt.plot(succ_pull_dict.keys(), succ_pull_dict.values(), color = 'green')
@@ -344,7 +341,7 @@ def web():
         # Text box
         rxs = round(succ_pull_dict[xs], 8)
         textstr = "\n".join([r'Actual Probability of successfully obtaining a 5★ Weapon on Pull No. $\bf{%s}$:' % str(xs),
-                             f'{rxs}' + ' (around ' + r"$\bf" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
+                             f'{rxs}' + ' (around ' + r"$\bf{" + str(round(rxs * 100, 2)) + "\%}$" + ')'])
         props = dict(boxstyle = 'round', facecolor = 'greenyellow')
         plt.text(-1.25, 0.115, textstr, fontsize = 12, va = 'top', bbox = props)
 
@@ -384,12 +381,8 @@ def about():
     st.markdown("- [**Statistical model for Genshin Impact's droprates - Post on HoYoLAB Forums by Sengalev, original by Cgg**](https://www.hoyolab.com/article/497840)")
     st.markdown('This infographic post on **Reddit** provides a simplified overview of what this app aims to illustrate that may be easier to understand for some:')
     st.markdown("- [**Soft and hard pity explained based on 24M wishes - Post on r/Genshin_Impact by u/chaos-kaizer**](https://www.reddit.com/r/Genshin_Impact/comments/o9v0c0/soft_and_hard_pity_explained_based_on_24m_wishes)")
-    st.markdown("### Visit Genshin-Wishes Main Website:")
-    st.markdown("- [**Genshin Wishes Official Website**](https://genshin-wishes.com)")
-    st.markdown("---")
-    st.markdown('**Important Notice**: *This app is not affiliated with genshin-wishes.com or HoYoVerse. All technical details relating to current probability rates may be subject to change in the future.*')    
 
 
 if __name__ == "__main__":
-    st.set_page_config(page_title = 'Genshin Wish Stats', page_icon = '🎲')
+    st.set_page_config(page_title = 'Genshin Impact WishStats', page_icon = '🎲')
     main()
