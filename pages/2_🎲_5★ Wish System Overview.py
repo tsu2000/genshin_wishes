@@ -27,7 +27,7 @@ def main():
     
     st.markdown('### 🎲 &nbsp; Statistics of 5★ Drop Rates in Genshin Impact')
     
-    st.markdown('This web app is for the theoretical data visualisation of the drop rates of a 5★ Character or Weapon in Genshin Impact made using the *matplotlib* library in Python. To observe and interact with the data visualisations, please select a banner from the box below.')
+    st.markdown('This feature visualises the probability mass function (PMF), cumulative distribution function (CDF), and pull outcome distributions for 5★ characters or weapons in Genshin Impact using `matplotlib`. To observe and interact with the data visualisations, please select a banner from the box below.')
 
     topics = ['5★ Drop Rate for Permanent/Chararacter Event Banners', 
               '5★ Drop Rate for Weapon Event Banners',
