@@ -15,27 +15,24 @@ def main():
         st.image(img, output_format = 'png')
 
     with col2:
-        st.title('Genshin Impact Wish Stats')
+        st.title('Genshin Impact WishStats')
 
     with col3:
         badge(type = 'github', name = 'tsu2000/genshin_wishes', url = 'https://github.com/tsu2000/genshin_wishes')
 
-    st.markdown('### 🏠 &nbsp; Statistics-based apps about Genshin Impact wishes')
-    st.markdown('Welcome to the homepage for all Streamlit-based web applications centered around wishing statistics in Genshin Impact! To start using a feature, navigate to the sidebar on the left.')
+    st.markdown("### 🏠 &nbsp; Visualising Genshin Impact's Wish & Pity System")
+    st.markdown("An interactive Streamlit app that explores the drop rates and pity mechanics behind Genshin Impact's wish system. Use the sidebar to get started.")
 
     st.markdown('---')
 
-    st.markdown('#### Current Web Apps:')
-
-    st.markdown('These are the web apps the site currently has:')
-    st.markdown('- **5★ Probability Distributions**: Allows users to visualise comprehensive in-game drop rates as probability distributions for 5★ items.')
-    st.markdown('- **4/5★ Drop Rates Simulation**: Allows users to simulate and predict their in-game 5★ **OR** 4★ drop rates separately based on provided user input, such as number of wishes, pity level, and type of banner.')
-    st.markdown('- **Combined Drop Rates Simulation**: Allows users to simulate and predict their in-game **combined** 3★/4★/5★ drop rates based on provided user input, such as number of wishes, pity level, and type of banner.')
+    st.markdown('#### Current Features:')
+    st.markdown('- 🎲 **Wish System Probabilities**: Data visualisations and statistical explanations behind the wish and pity system probability rates in Genshin Impact (for 5★ items/characters).')
+    st.markdown('- 🕹️ **Drop Rate Simulator**: Customize your wish history to simulate expected outcomes based on pity count, banner type, and number of pulls.')
 
     st.markdown('---')
 
-    st.markdown('***Disclaimer**: This application is not affiliated with Genshin Impact, HoYoVerse in any way, shape or form. Information in this app may be subject to change and inaccurate. Please visit [**Wish Counter**](https://paimon.moe/wish) for more details regarding one\'s own personal wishing history and statistics.*')
+    st.markdown('***Disclaimer**: This app is not affiliated with HoYoVerse or Genshin Impact. All figures are estimates. For actual wish history and official tools, visit [**Wish Counter**](https://paimon.moe/wish).*')
 
 if __name__ == "__main__":
-    st.set_page_config(page_title = 'Genshin Wish Stats', page_icon = '🏠')
+    st.set_page_config(page_title = 'Genshin Impact WishStats', page_icon = '🏠')
     main()
