@@ -31,7 +31,7 @@ def main():
 
     st.markdown('### 🕹️ &nbsp; Combined 3★/4★/5★ drop rate simulation')
 
-    st.markdown('This web app simulates the **combined** in-game drop rates of 4★ and 5★ characters/weapons and resulting 3★ drops in Genshin Impact according to theoretical data. Note that 5★ drops override 4★ drops in this simulation, even if the 4★ pity is at guaranteed.')
+    st.markdown('This feature simulates the combined drop rates of 4★ and 5★ characters or weapons (and resulting 3★ weapons) in Genshin Impact based on theoretical probabilities and user-defined inputs. As in the game, the simulation will prioritise a 5★ drop over a 4★ drop, even if the 4★ pity is guaranteed. To calculate your current 5★ (or 4★) pity, open your wish history for the relevant banner and count the number of non-5★ (or non-4★) items you have received since the last one before adding 1. *(Pity cannot be 0; it reflects the number of pulls since your last 5★/4★ item)*')
 
     st.markdown('---')
 
